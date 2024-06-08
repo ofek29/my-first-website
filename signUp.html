@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="com.js"></script>
+</head>
+
+<body>
+
+    <nav id="nav-bar">
+
+        <div class="logo-div">
+            <img src="cutlery.png" alt="logo" id="logo">
+            <h2>FOODY</h2>
+        </div>
+        <div class="nav-buttons">
+            <ul>
+                <li> <a href="index.html">Home</a> </li>
+                <li> <a href="recipes.html">Recipes</a> </li>
+                <li> <a href="shoppingList.html">shopping Planner</a> </li>
+            </ul>
+
+            <ul>
+                <li id="sign-in-link"><a href="signin.html">Sign In</a></li>
+                <li id="sign-up-link"><a href="signup.html">Sign Up</a></li>
+                <li id="user-name-link" style="display:none;"><a href="#"></a></li>
+                <li id="logout-link" style="display:none;"><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+            </ul>
+        </div>
+    </nav>
+
+    <form action="" method="" id="sign-up-form">
+
+        <div class="sign-up-container">
+
+            <label> User name</label>
+            <input type="text" id="user-name-su" placeholder="user name*" required>
+
+
+            <label for="email">Email</label>
+            <input type="email" id="email-su" name="email" placeholder="email*" required>
+
+
+            <label>Choose a password </label>
+            <input type="password" id="password-su" placeholder="password*" required>
+
+            <label>Confirm password </label>
+            <input type="password" id="confirm-password-su" placeholder="password*" required>
+
+
+            <!-- <label> Birthday: </label>
+            <div class="birthday-inputs">
+                <select name="month" id="monthSelect">
+                    <option disabled selected>Month</option>
+
+                    <option value="jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
+                </select>
+
+                <input type="number" placeholder="Day" min="1" max="31">
+                <input type="number" placeholder="Year" min="1923" max="2024">
+
+            </div> -->
+
+
+
+
+            <label>Mobile phone </label>
+            <input type="tel" name="phone" id="phone-su" placeholder="Mobile Phone">
+
+
+
+            <button type="submit">Sign Up</button>
+        </div>
+
+
+    </form>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
