@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('password', password);
             localStorage.setItem('phone', phone);
 
-            alert('Sign-up successful! Welcome' + userName);
+            alert(`Sign-up successful! Welcome ${userName}`);
             window.location.href = 'signIn.html';
         });
     }
@@ -47,12 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const storedUserName = localStorage.getItem('username');
             const storedEmail = localStorage.getItem('email');
             const storedPassword = localStorage.getItem('password');
-
-            console.log(siUserName, siEmail, siPassword, storedUserName, storedEmail, storedPassword)
             if (siEmail === storedEmail && siPassword === storedPassword && siUserName === storedUserName) {
                 localStorage.setItem('isSignedIn', 'true');
 
-                alert('Sign-in successful! Welcome ' + storedUserName);
+                alert(`Sign-in successful! Welcome ${storedUserName}`);
                 window.location.href = 'index.html';
             } else {
                 alert('Invalid email or password!');
@@ -78,40 +76,41 @@ document.addEventListener('DOMContentLoaded', () => {
             recipeGallery.appendChild(card);
         });
     }
+});
 
-    // Search bar imp.
-    const searchBar = document.getElementById('search-bar');
-    if (searchBar) {
-        searchBar.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(query));
 
-            recipeGallery.innerHTML = '';
-            filteredRecipes.forEach((recipe, index) => {
-                const card = document.createElement('div');
-                card.className = 'recipe-card';
-                card.innerHTML = `
+// Search bar imp.
+const searchBar = document.getElementById('search-bar');
+if (searchBar) {
+    searchBar.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(query));
+
+        recipeGallery.innerHTML = '';
+        filteredRecipes.forEach((recipe, index) => {
+            const card = document.createElement('div');
+            card.className = 'recipe-card';
+            card.innerHTML = `
             <img src="${recipe.image}" alt="${recipe.name}">
             <h3>${recipe.name}</h3>
             <ul>${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
             <button class="save-recipe-button" data-index="${index}">Save Recipe</button>
           `;
-                recipeGallery.appendChild(card);
-            });
+            recipeGallery.appendChild(card);
         });
-    }
-
-    // Save recipe functionality
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('save-recipe-button') && checkSignInStatus()) {
-
-            const index = e.target.getAttribute('data-index');
-            const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
-            savedRecipes.push(recipes[index]);
-            localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
-            alert(`${recipes[index].name} has been saved to your list.`);
-        }
     });
+}
+
+// Save recipe functionality
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('save-recipe-button') && checkSignInStatus()) {
+
+        const index = e.target.getAttribute('data-index');
+        const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+        savedRecipes.push(recipes[index]);
+        localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+        alert(`${recipes[index].name} has been saved to your list.`);
+    }
 });
 
 //delete save recipe

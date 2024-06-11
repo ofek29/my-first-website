@@ -46,7 +46,8 @@ function logout() {
     // localStorage.removeItem('password');
     // localStorage.removeItem('phone');
     // localStorage.removeItem('email');
-
+    alert('you have successfully logged out! ' + localStorage.getItem('username')
+    );
     window.location.href = 'index.html';
 }
 
